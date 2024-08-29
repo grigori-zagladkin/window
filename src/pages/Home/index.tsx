@@ -9,6 +9,7 @@ import {
     NavigationMenuTrigger,
     NavigationMenuViewport,
   } from "@/components/ui/navigation-menu";
+import AdminPanel from "@/components/AdminPanel";
   
 
 const CATEGORIES_DATA = [
@@ -147,9 +148,10 @@ const CategoryBlock = () => CATEGORIES_DATA.map((item, idx) => (
 
 const HomePage: FC = () => {
     return (
-        <div className='max-w-[80%]'>
-            <div className='flex gap-4'>
+        <div className='max-w-[80%] mx-auto'>
+            <div className='flex justify-center gap-8 py-4'>
                 <CategoryBlock />
+                <AdminPanel />
             </div>
         </div>
     );
