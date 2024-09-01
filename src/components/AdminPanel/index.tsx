@@ -15,6 +15,7 @@ import PromoManage from '@/components/AdminPanel/PromoManage';
 import SubCategoriesManage from '@/components/AdminPanel/SubCategoriesManage';
 import ProductsManage from '@/components/AdminPanel/ProductsManage';
 import AttributesManage from '@/components/AdminPanel/AttributesManage';
+import { CategoriesManageWidget } from '@/components/AdminPanel/CategoiesManage';
 
 const AdminPanel: FC = () => {
   const [open, setOpen] = useState(false);
@@ -46,7 +47,7 @@ const AdminPanel: FC = () => {
             <ProductsManage />
           </TabsContent>
           <TabsContent value="categories">
-            <CategoriesManage />
+            <CategoriesManageWidget />
           </TabsContent>
           <TabsContent value="sub_categories">
             <SubCategoriesManage />

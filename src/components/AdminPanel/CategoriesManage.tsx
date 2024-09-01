@@ -38,6 +38,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog';
+import { useCategories } from '@/components/AdminPanel/CategoiesManage';
 
 type Category = {
   id: number;
@@ -51,9 +52,10 @@ const formSchema = z.object({
 });
 
 const fetchCategories = async (search: string) =>
-    await fetch('/api/categories?search=' + search).then((res) => res.json());
+  await fetch('/api/categories?search=' + search).then((res) => res.json());
 
 const CategoriesManage: FC = () => {
+  const { handleSearch, searchTerm, data } = useCategories();
   const [currentEditableId, setCurrentEditableId] = useState(0);
   const clearCurrentEditableId = useCallback(() => {
     setCurrentEditableId(0);
@@ -71,10 +73,10 @@ const CategoriesManage: FC = () => {
         toast.success('Успешно');
         fetchCategories(debouncedSearch).then((res) => {
           setCategories(
-              res?.map?.((item) => ({
-                id: item.id,
-                title: item.title,
-              })),
+            res?.map?.((item) => ({
+              id: item.id,
+              title: item.title,
+            })),
           );
         });
       });
@@ -156,16 +158,18 @@ const CategoriesManage: FC = () => {
     try {
       await fetch('/api/categories', {
         method: 'POST',
-      }).then((res) => {
-        setIsOpen(true);
-        setCurrentEditableId(res as number);
-      });
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          setIsOpen(true);
+          setCurrentEditableId(res as number);
+        });
       fetchCategories(debouncedSearch).then((res) => {
         setCategories(
-            res?.map?.((item) => ({
-              id: item.id,
-              title: item.title,
-            })),
+          res?.map?.((item) => ({
+            id: item.id,
+            title: item.title,
+          })),
         );
       });
       toast.success('Успешно');
@@ -218,7 +222,7 @@ const CategoriesManage: FC = () => {
           />
           <Button onClick={handleBtnClick}>+ Добавить категорию</Button>
         </div>
-        <DataTable columns={columns} data={categories} />
+        <DataTable columns={columns} data={data || []} />
       </div>
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetContent>

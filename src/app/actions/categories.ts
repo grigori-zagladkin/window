@@ -7,14 +7,10 @@ const getAllCategories = async (searchString: string = '') => {
   try {
     return prisma.category.findMany({
       where: {
-        OR: [
-          {
-            title: {
-              contains: searchString,
-              mode: 'insensitive',
-            },
-          },
-        ],
+        title: {
+          contains: searchString,
+          mode: 'insensitive',
+        },
       },
     });
   } catch (err) {
