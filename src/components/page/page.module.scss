@@ -1,34 +1,33 @@
 .header {
-    @apply py-4 flex flex-col justify-center gap-2 bg-neutral-50;
+  @apply flex flex-col justify-center gap-2 bg-neutral-50 py-4;
 
-    &TopBlock {
-        @apply mx-auto max-w-[80%] flex items-center gap-10;
+  &TopBlock {
+    @apply mx-auto flex max-w-[80%] items-center gap-10;
+  }
+
+  &Search {
+    @apply flex justify-center gap-6;
+
+    &Input {
+      @apply max-w-[400px];
+    }
+  }
+
+  &Logo {
+    @apply text-2xl;
+
+    &FirstCaption {
+      @apply text-blue-600;
+    }
+  }
+
+  &AdditionalBlock {
+    &Phone {
+      @apply text-xl leading-none text-blue-600;
     }
 
-    &Search {
-        @apply flex gap-6 justify-center;
-
-        &Input {
-            @apply max-w-[400px];
-        }
+    &WorkTime {
+      @apply text-sm font-light;
     }
-
-
-    &Logo {
-        @apply text-2xl;
-
-        &FirstCaption {
-            @apply text-blue-600;
-        }
-    }
-
-    &AdditionalBlock {
-        &Phone {
-            @apply text-xl text-blue-600 leading-none;
-        }
-
-        &WorkTime {
-            @apply text-sm font-light;
-        }
-    }
+  }
 }

@@ -1,7 +1,7 @@
-import {FC} from "react";
+import { FC } from 'react';
 
 const SubCategoriesManage: FC = () => {
-  return <div></div>
+  return <></>;
 };
 
 export default SubCategoriesManage;
