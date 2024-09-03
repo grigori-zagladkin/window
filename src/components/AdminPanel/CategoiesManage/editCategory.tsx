@@ -1,6 +1,1 @@
-
-
-
-export const editCategory = () => {
-
-}
+export const editCategory = () => {};

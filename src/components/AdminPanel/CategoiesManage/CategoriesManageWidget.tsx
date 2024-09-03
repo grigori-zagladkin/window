@@ -5,7 +5,7 @@ import {
   useCategories,
 } from '@/components/AdminPanel/CategoiesManage';
 import { AdminTable } from '@/components/AdminPanel/common/AdminTable';
-import {ColumnDef} from "@tanstack/react-table";
+import { ColumnDef } from '@tanstack/react-table';
 
 export const CategoriesManageWidget: FC = () => {
   const { data, searchTerm, handleSearch, handleDelete, handleUpdate, handleCreate } =

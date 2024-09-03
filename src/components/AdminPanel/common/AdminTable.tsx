@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { DataTable } from '@/components/ui/data-table';
 import { Wrapper } from '@/components/AdminPanel/common/Wrapper';
 import { ColumnDef } from '@tanstack/react-table';
+import {Alert, AlertContext} from "@/components/AdminPanel/common/Alert";
 
 interface IAdminTableProps<T> {
   searchTerm: string;
@@ -25,19 +26,22 @@ export const AdminTable = <T extends object>({
   handleCreate,
 }: IAdminTableProps<T>) => {
   return (
-    <Wrapper>
-      <div className="mt-10 flex flex-col gap-10">
-        <div className="flex items-center gap-6">
-          <Input
-            value={searchTerm}
-            onChange={handleSearch}
-            placeholder="Поиск..."
-            className="min-w-[300px]"
-          />
-          <Button onClick={handleCreate}>+ Добавить категорию</Button>
+    <AlertContext>
+      <Wrapper>
+        <div className="mt-10 flex flex-col gap-10">
+          <div className="flex items-center gap-6">
+            <Input
+                value={searchTerm}
+                onChange={handleSearch}
+                placeholder="Поиск..."
+                className="min-w-[300px]"
+            />
+            <Button onClick={handleCreate}>+ Добавить категорию</Button>
+          </div>
+          <DataTable columns={columns} data={data || []} />
         </div>
-        <DataTable columns={columns} data={data || []} />
-      </div>
-    </Wrapper>
+      </Wrapper>
+      <Alert />
+    </AlertContext>
   );
 };

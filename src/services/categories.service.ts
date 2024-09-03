@@ -11,6 +11,6 @@ export const CategoriesService = {
   },
   updateCategory: async () => {},
   deleteCategory: async (id: number) => {
-    return await ky.delete<unknown>('/api/categories/'+id).json();
+    return await ky.delete<unknown>('/api/categories/' + id).json();
   },
 };
